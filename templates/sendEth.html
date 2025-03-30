@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="static/CSS/styleSend.css">
+        <script>
+            var privateKeyVisible = false;
+    
+            function togglePrivateKey() {
+                var privateKeyElement = document.getElementById('private-key');
+                var btnElement = document.getElementById('showbtn');
+    
+                if (privateKeyVisible) {
+                    privateKeyElement.style.display = 'none';
+                    privateKeyVisible = false;
+                    btnElement.innerHTML = 'show';
+                } else {
+                    privateKeyElement.style.display = 'inline';
+                    privateKeyVisible = true;
+                    btnElement.innerHTML = 'hide';
+                }
+            }
+            window.addEventListener('beforeunload', function () {
+                // Clear specific form elements
+                document.getElementById('sendForm').Amount.value = 0;
+            });
+        </script>
+    </head>
+    <body>
+       
+        <div>
+            Your Account Address: {{ address }}
+        </div>
+        Your Private Key:
+        <span id="private-key" style="display: none;">{{ privateKey }}</span><br>
+        <button class="button-48" role="button" onclick="togglePrivateKey()" id="showbtn"><span class="text">show</span></button><br>
+<table align="center"><form action="sentMsg" method="post" id="sendForm">
+            <input  type="hidden" name="username" value="{{user}}">
+            <tr><td><label>Enter Receiver's Wallet Address: </label></td>
+            <td><input id="ips" type="text" name="ReceiverAddress" placeholder="paste/type address"></td></tr>
+            <br>
+            <tr><td><label>Enter Amount to be sent: </label></td>
+            <td><input  id="ips" type="number" name="Amount" id="Amount"><br></td></tr>
+            
+        </table><input id="lbs" type="submit" value="Send"></form>
+    </body>
+</html>

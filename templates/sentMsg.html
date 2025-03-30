@@ -1,0 +1,40 @@
+<html>
+<head>
+    <style type="text/css">
+        button
+        {
+              margin-top: 35px;
+  border-radius: 5px;
+  height: 30px;
+  width: 100px;
+  border: 3px solid purple;
+  background-color: rgb(5, 6, 45);
+  color: white;
+        }
+
+        body{
+  text-align: center;
+  margin-top: 50px;
+  font-family: 'Jost', sans-serif;
+/*  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);*/
+  background-image: url("static/CSS/block.png");
+  background-attachment: fixed;
+  background-size:cover;
+  color: white;
+}
+
+    </style>
+</head>
+<body>
+    
+    <h1>{{message}}</h1>
+    <p>Sender's Address: {{s_addr}}</p>
+    <p>Receiver's Address: {{r_addr}}</p>
+    <p>Amount Sent: {{amt}}Eth</p>
+    <p>Transaction hash: {{txn_hash}}</p>
+    <form action="{{url_for('home')}}" method="get">
+        <button>Go Back </button>
+        <input type="hidden" name="username" id="username" value="{{username}}">
+    </form>
+</body>
+</html>
